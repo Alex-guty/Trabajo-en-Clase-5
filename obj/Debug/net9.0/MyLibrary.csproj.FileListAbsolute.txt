@@ -226,3 +226,5 @@ C:\Users\Alex\OneDrive - Universidad Americana Uam SRL\Progra Avanzada\MyLibrary
 C:\Users\Alex\OneDrive - Universidad Americana Uam SRL\Progra Avanzada\MyLibrary\obj\Debug\net9.0\MyLibrary.pdb
 C:\Users\Alex\OneDrive - Universidad Americana Uam SRL\Progra Avanzada\MyLibrary\obj\Debug\net9.0\MyLibrary.genruntimeconfig.cache
 C:\Users\Alex\OneDrive - Universidad Americana Uam SRL\Progra Avanzada\MyLibrary\obj\Debug\net9.0\ref\MyLibrary.dll
+C:\Users\Alex\OneDrive - Universidad Americana Uam SRL\Progra Avanzada\MyLibrary\obj\Debug\net9.0\MyLibrary.sourcelink.json
+C:\Users\Alex\OneDrive - Universidad Americana Uam SRL\Progra Avanzada\MyLibrary\bin\Debug\net9.0\Data\books.json

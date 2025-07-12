@@ -1,0 +1,82 @@
+[
+  {
+    "Id": 1,
+    "OriginalName": "Don Quixote",
+    "SpanishName": "Don Quijote",
+    "Edition": "1ª",
+    "Year": 1605,
+    "Editor": "Francisco de Robles"
+  },
+  {
+    "Id": 2,
+    "OriginalName": "Pride and Prejudice",
+    "SpanishName": "Orgullo y Prejuicio",
+    "Edition": "1ª",
+    "Year": 1813,
+    "Editor": "T. Egerton"
+  },
+  {
+    "Id": 3,
+    "OriginalName": "Moby Dick",
+    "SpanishName": "Moby Dick",
+    "Edition": "1ª",
+    "Year": 1851,
+    "Editor": "Richard Bentley"
+  },
+  {
+    "Id": 4,
+    "OriginalName": "The Odyssey",
+    "SpanishName": "La Odisea",
+    "Edition": "1ª",
+    "Year": -700,
+    "Editor": "Homero"
+  },
+  {
+    "Id": 5,
+    "OriginalName": "The Divine Comedy",
+    "SpanishName": "La Divina Comedia",
+    "Edition": "1ª",
+    "Year": 1320,
+    "Editor": "Johannes Numeister"
+  },
+  {
+    "Id": 6,
+    "OriginalName": "Hamlet",
+    "SpanishName": "Hamlet",
+    "Edition": "1ª",
+    "Year": 1603,
+    "Editor": "Nicholas Ling"
+  },
+  {
+    "Id": 7,
+    "OriginalName": "War and Peace",
+    "SpanishName": "Guerra y Paz",
+    "Edition": "1ª",
+    "Year": 1869,
+    "Editor": "The Russian Messenger"
+  },
+  {
+    "Id": 8,
+    "OriginalName": "Don Juan",
+    "SpanishName": "Don Juan",
+    "Edition": "1ª",
+    "Year": 1630,
+    "Editor": "Francisco de Robles"
+  },
+  {
+    "Id": 9,
+    "OriginalName": "Ulysses",
+    "SpanishName": "Ulises",
+    "Edition": "1ª",
+    "Year": 1922,
+    "Editor": "Sylvia Beach"
+  },
+  {
+    "Id": 10,
+    "OriginalName": "One Hundred Years of Solitude",
+    "SpanishName": "Cien Años de Soledad",
+    "Edition": "1ª",
+    "Year": 1967,
+    "Editor": "Sudamericana"
+  }
+]

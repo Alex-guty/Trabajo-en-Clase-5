@@ -1,0 +1,173 @@
+@model IEnumerable<MyLibrary.Models.LibroDto>
+
+@{
+    ViewData["Title"] = "Books";
+}
+
+<h1>Books Library</h1>
+
+@if (ViewBag.ShowingAllSources != null)
+{
+    <div class="alert alert-success">
+        <h4><i class="fas fa-database"></i> Showing All Books from Both Sources</h4>
+        <p>Displaying books from both SQL Database and JSON file. Total: <strong>@ViewBag.BookCount</strong> books</p>
+    </div>
+}
+else if (ViewBag.ShowingSqlOnly != null)
+{
+    <div class="alert alert-info">
+        <h4><i class="fas fa-database"></i> Showing Books from SQL Database Only</h4>
+        <p>Displaying books from SQL Database only. Total: <strong>@ViewBag.BookCount</strong> books</p>
+    </div>
+}
+else if (ViewBag.ShowingJsonOnly != null)
+{
+    <div class="alert alert-warning">
+        <h4><i class="fas fa-file-code"></i> Showing Books from JSON File Only</h4>
+        <p>Displaying books from JSON file only. Total: <strong>@ViewBag.BookCount</strong> books</p>
+    </div>
+}
+else if (ViewBag.SearchId != null)
+{
+    <div class="alert alert-primary">
+        <h4><i class="fas fa-search"></i> Search Result by ID</h4>
+        <p>Showing book with ID: <strong>@ViewBag.SearchId</strong></p>
+    </div>
+}
+else if (!string.IsNullOrEmpty(ViewBag.SearchFullName?.ToString()))
+{
+    <div class="alert alert-primary">
+        <h4><i class="fas fa-search"></i> Search Result by Full Name</h4>
+        <p>Searching for: <strong>@ViewBag.SearchFullName</strong> in Original Name and Spanish Name</p>
+    </div>
+}
+else if (!string.IsNullOrEmpty(ViewBag.SearchEditor?.ToString()))
+{
+    <div class="alert alert-primary">
+        <h4><i class="fas fa-search"></i> Search Result by Editor</h4>
+        <p>Searching for editor: <strong>@ViewBag.SearchEditor</strong></p>
+    </div>
+}
+else if (ViewBag.FromYear != null || ViewBag.ToYear != null)
+{
+    <div class="alert alert-primary">
+        <h4><i class="fas fa-search"></i> Search Result by Year Range</h4>
+        <p>
+            Showing books from 
+            @if (ViewBag.FromYear != null && ViewBag.ToYear != null)
+            {
+                <text><strong>@ViewBag.FromYear</strong> to <strong>@ViewBag.ToYear</strong></text>
+            }
+            else if (ViewBag.FromYear != null)
+            {
+                <text><strong>@ViewBag.FromYear</strong> onwards</text>
+            }
+            else if (ViewBag.ToYear != null)
+            {
+                <text>up to <strong>@ViewBag.ToYear</strong></text>
+            }
+        </p>
+    </div>
+}
+
+<div class="row mb-3">
+    <div class="col-md-12">
+        <div class="btn-group" role="group" aria-label="Data Source Selection">
+            <a asp-action="AllSources" class="btn btn-success"><i class="fas fa-layer-group"></i> All Sources</a>
+            <a asp-action="SqlOnly" class="btn btn-info"><i class="fas fa-database"></i> SQL Database Only</a>
+            <a asp-action="JsonOnly" class="btn btn-warning"><i class="fas fa-file-code"></i> JSON File Only</a>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <form method="get" asp-action="Index">
+            <div class="input-group">
+                <input type="number" name="id" value="@ViewBag.SearchId" class="form-control" placeholder="Search by ID...">
+                <button class="btn btn-info" type="submit">Search by ID</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <form method="get" asp-action="Index">
+            <div class="input-group">
+                <input type="text" name="searchFullName" value="@ViewBag.SearchFullName" class="form-control" placeholder="Search by full name (Original/Spanish)...">
+                <button class="btn btn-success" type="submit">Search Full Name</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-6">
+        <form method="get" asp-action="Index">
+            <div class="input-group">
+                <input type="text" name="searchEditor" value="@ViewBag.SearchEditor" class="form-control" placeholder="Search by editor...">
+                <button class="btn btn-warning" type="submit">Search by Editor</button>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <form method="get" asp-action="Index">
+            <div class="input-group">
+                <input type="number" name="fromYear" value="@ViewBag.FromYear" class="form-control" placeholder="From Year" min="1000" max="@DateTime.Now.Year">
+                <input type="number" name="toYear" value="@ViewBag.ToYear" class="form-control" placeholder="To Year" min="1000" max="@DateTime.Now.Year">
+                <button class="btn btn-dark" type="submit">Search Year Range</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="row mb-3">
+    <div class="col-md-12">
+        <a asp-action="Index" class="btn btn-info">Show All Books</a>
+    </div>
+</div>
+
+@if (Model.Any())
+{
+    <div class="row">
+        @foreach (var book in Model)
+        {
+            <div class="col-md-4 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">@book.OriginalName</h5>
+                        <p class="card-text">
+                            <strong>Spanish Name:</strong> @book.SpanishName<br>
+                            <strong>Edition:</strong> @book.Edition<br>
+                            <strong>Editor:</strong> @book.Editor<br>
+                            @if (book.Year.HasValue)
+                            {
+                                <strong>Year:</strong> @book.Year<br>
+                                <strong>Antiquity:</strong> @book.Antiquity <text>years</text>
+                            }
+                        </p>
+                        <a asp-action="Details" asp-route-id="@book.Id" class="btn btn-primary">View Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div class="alert alert-info">
+        <h4>No books found</h4>
+        <p>
+            @if (!string.IsNullOrWhiteSpace(ViewBag.SearchTitle?.ToString()))
+            {
+                <span>No books found with title containing "@ViewBag.SearchTitle"</span>
+            }
+            else if (!string.IsNullOrWhiteSpace(ViewBag.SearchAuthor?.ToString()))
+            {
+                <span>No books found with author containing "@ViewBag.SearchAuthor"</span>
+            }
+            else
+            {
+                <span>No books available in the library.</span>
+            }
+        </p>
+    </div>
+}

@@ -137,9 +137,10 @@ public partial class AdventureWorksContext : DbContext
         {
             entity.HasKey(e => e.Id).HasName("PK__Libros__3214EC075213DBDD");
 
-            entity.Property(e => e.Autor).HasMaxLength(255);
-            entity.Property(e => e.ISBN).HasMaxLength(50);
-            entity.Property(e => e.Titulo).HasMaxLength(255);
+            entity.Property(e => e.OriginalName).HasMaxLength(255);
+            entity.Property(e => e.SpanishName).HasMaxLength(255);
+            entity.Property(e => e.Edition).HasMaxLength(50);
+            entity.Property(e => e.Editor).HasMaxLength(255);
         });
 
         modelBuilder.Entity<Prestamo>(entity =>
